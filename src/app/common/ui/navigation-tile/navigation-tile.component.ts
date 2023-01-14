@@ -3,7 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 @Component({
   selector: 'app-navigation-tile',
   templateUrl: './navigation-tile.component.html',
-  styleUrls: ['./navigation-tile.component.css']
+  styleUrls: ['./navigation-tile.component.less']
 })
 export class NavigationTileComponent implements OnInit {
 
