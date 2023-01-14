@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --output-path docs --base-href /primary-school-angular/",
+    "build": "ng build --output-path docs --base-href /primary-angular/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
