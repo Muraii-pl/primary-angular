@@ -1,0 +1,22 @@
+@sm: 540px;
+@md: 720px;
+@lg: 960px;
+@xl: 1140px;
+
+.min-width(@min, @content) {
+  @media all and (min-width: @min) {
+    @content();
+  }
+}
+
+.max-width(@max, @content) {
+  @media all and (max-width: @max) {
+    @content();
+  }
+}
+
+.min-max-width(@min, @max, @content) {
+  @media all and (min-width: @min) and (max-width: @max) {
+    @content();
+  }
+}
