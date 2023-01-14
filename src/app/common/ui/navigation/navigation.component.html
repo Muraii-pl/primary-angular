@@ -1,4 +1,5 @@
 <nav>
   <app-logo [isVisible]="true"></app-logo>
   <span>{{ mainMotto }}</span>
+  <app-nav-button (isOpen)="isNavOpen = $event"></app-nav-button>
 </nav>

@@ -9,8 +9,8 @@ import { ApiService } from '../../service/ApiService';
 })
 export class NavigationComponent implements OnInit {
   @Input() mainMotto: string;
-
   public postList: INavigation[];
+  public isNavOpen = false;
   constructor(
     private readonly _apiService: ApiService,
   ) { }

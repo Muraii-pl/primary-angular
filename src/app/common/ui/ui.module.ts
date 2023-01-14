@@ -12,7 +12,8 @@ import { NavButtonComponent } from './nav-button/nav-button.component';
     NavigationComponent,
     NavigationTileComponent,
     LogoComponent,
-    NavButtonComponent
+    NavButtonComponent,
+
   ],
   exports: [
     NavigationComponent
