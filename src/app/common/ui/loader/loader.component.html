@@ -1,0 +1,10 @@
+<div
+  *ngIf="isLoading$ | async"
+  class="loader__background"
+  [attr.aria-busy]="isLoading"
+  aria-live="polite">
+  <div class="loader">
+    <div class="loader__secondary"></div>
+    <div class="loader__primary"></div>
+  </div>
+</div>
