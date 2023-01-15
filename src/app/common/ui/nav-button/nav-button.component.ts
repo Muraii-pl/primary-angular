@@ -18,6 +18,7 @@ export class NavButtonComponent implements OnInit {
   @Output() isOpen: EventEmitter<boolean> = new EventEmitter<boolean>(true)
 
   public menuIsOpen = false;
+  public readonly tabIndex = 1;
   constructor(
     private readonly _cdr: ChangeDetectorRef,
   ) { }

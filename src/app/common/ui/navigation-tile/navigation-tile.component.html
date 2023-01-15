@@ -1,1 +1,25 @@
-<p>navigation-tile works!</p>
+<li *ngIf="isLink">
+  <a [routerLink]="['/post', slug]" *ngIf="slug !== 'e-dziennik'; else externalLink">
+    {{ name }}
+  </a>
+</li>
+<li *ngIf="isPage">
+  <a [routerLink]="['/', slug]">
+    {{ name }}
+  </a>
+</li>
+
+<li *ngIf="!isLink && !isPage">
+  {{ name }}
+  <span class="angle" *ngIf="subMenuItems && subMenuItems.length "></span>
+  <ul>
+    <app-navigation-tile *ngFor="let subMenuItem of subMenuItems" [navItemProperty]="subMenuItem"></app-navigation-tile>
+  </ul>
+</li>
+
+
+<ng-template #externalLink>
+  <a [href]="isLink" target="_blank">
+    {{ name }}
+  </a>
+</ng-template>

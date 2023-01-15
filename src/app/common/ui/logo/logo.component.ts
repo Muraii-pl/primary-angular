@@ -10,9 +10,10 @@ export class LogoComponent implements OnInit {
 
   @Input() isVisible: boolean;
 
-  public readonly logoUrl = environment.production ? '/primary-angular/assets/images/logo.png' : '/assets/images/logo.png'
+  public readonly logoUrl = `${environment.imagesUrl}assets/images/logo.png`
   public readonly logoText = "Logo - Zespół Szkolno-Przedszkolny w Hażlachu"
-  public readonly tabIndex = 2;
+  public readonly linkToHome = environment.homeUrl
+  public readonly tabIndex = 1;
 
   constructor() { }
 

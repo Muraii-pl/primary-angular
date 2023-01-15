@@ -6,6 +6,10 @@ const routes: Routes = [
   {
     path: 'post/:slug',
     component: PostPageComponent
+  },
+  {
+    path: ':slug',
+    component: PostPageComponent
   }
 ]
 

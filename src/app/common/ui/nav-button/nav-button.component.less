@@ -1,6 +1,13 @@
 @import "../../styles/common";
+:host {
+  align-self: flex-start;
+}
 .button {
+
   padding: 8px;
+  &:focus {
+    outline: 1px @textColor solid;
+  }
   &__box {
     width: 15px;
     height: 15px;

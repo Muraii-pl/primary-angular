@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://muraii-test.cba.pl/wp-json/wp/v2'
+  apiUrl: 'https://muraii-test.cba.pl/wp-json/wp/v2',
+  homeUrl: 'http://localhost:4200/',
+  imagesUrl: '/'
 };
 
 /*

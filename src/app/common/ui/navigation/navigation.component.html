@@ -1,5 +1,8 @@
-<nav>
+<nav class="nav" aria-label="Main Menu">
   <app-logo [isVisible]="true"></app-logo>
-  <span>{{ mainMotto }}</span>
+  <app-main-motto></app-main-motto>
   <app-nav-button (isOpen)="isNavOpen = $event"></app-nav-button>
+  <ul style="width: 100%" class="nav__list">
+    <app-navigation-tile *ngFor="let navItem of navList" [navItemProperty]="navItem"></app-navigation-tile>
+  </ul>
 </nav>

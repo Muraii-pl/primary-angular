@@ -4,6 +4,7 @@
   (click)="toggleNavigation()"
   [attr.aria-expanded]="menuIsOpen"
   [ngClass]="{ 'button--open': menuIsOpen }"
+  [tabIndex]="tabIndex"
   class="button"
 >
   <span class="button__box">

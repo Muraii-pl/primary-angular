@@ -1,4 +1,6 @@
-export interface INavigation {
-  title: string;
-  slug: string;
+import { INavigationItem } from './INavigationItem';
+
+export interface INavigation extends INavigationItem{
+  id: number;
+
 }
