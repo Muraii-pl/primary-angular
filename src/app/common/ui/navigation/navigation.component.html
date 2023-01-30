@@ -1,0 +1,13 @@
+<nav class="nav" aria-label="Main Menu" #navRef>
+  <app-logo [isVisible]="true"></app-logo>
+  <app-main-motto></app-main-motto>
+  <app-nav-button [menuIsOpen]="isNavOpen" (isOpen)="toggleNavigation($event)"></app-nav-button>
+  <ul class="nav__list" [ngClass]="{ 'nav__list--open': isNavOpen }" role="menu">
+    <app-navigation-tile
+      *ngFor="let navItem of navList"
+      [navItemProperty]="navItem" #navItemRef
+      [mainNavOpen]="isNavOpen"
+      (onLinkClick)="toggleNavigation($event)"
+    ></app-navigation-tile>
+  </ul>
+</nav>

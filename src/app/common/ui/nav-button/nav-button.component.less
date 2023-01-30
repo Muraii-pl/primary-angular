@@ -1,0 +1,46 @@
+@import "../../styles/common";
+:host {
+  align-self: flex-start;
+}
+.button {
+
+  padding: 8px;
+  &:focus {
+    outline: 1px @textColor solid;
+  }
+  &__box {
+    width: 15px;
+    height: 15px;
+    position: relative;
+    display: inline-block;
+  }
+  &__inner {
+    .button__mixin();
+    left: 0;
+    top:50%;
+    transform: translateY(-50%);
+    transition: background-color .1s .2s ease-in-out;
+    &:after, &:before {
+      .button__mixin();
+      content: '';
+      left: 0;
+      transition: transform .2s .2s ease-in-out;
+    }
+    &:before {
+      top: -5px
+    }
+    &:after {
+      top:5px;
+    }
+  }
+  &--open &__inner{
+    background-color: transparent;
+  }
+  &--open &__inner:before {
+    transform: translateY(5px) rotate(45deg);
+  }
+
+  &--open &__inner:after {
+    transform: translateY(-5px) rotate(-45deg);
+  }
+}

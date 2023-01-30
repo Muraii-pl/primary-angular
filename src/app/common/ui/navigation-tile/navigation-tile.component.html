@@ -1,0 +1,66 @@
+<li
+  *ngIf="isLink"
+  role="menuitem"
+  class="menu__item"
+  (click)="onLinkClick.emit(false)"
+>
+  <a
+    *ngIf="name !== 'E-dziennik'; else externalLink"
+    [routerLink]="['/post', slug]"
+    class="menu__item__link"
+    [tabIndex]="mainNavOpen ? tabIndex : -1"
+  >
+    {{ name }}
+  </a>
+</li>
+<li
+  *ngIf="isPage"
+  role="menuitem"
+  class="menu__item"
+  (click)="onLinkClick.emit(false)"
+>
+  <a
+    [routerLink]="['/', slug]"
+    [tabIndex]="mainNavOpen ? tabIndex : -1"
+    class="menu__item__link"
+  >
+    {{ name }}
+  </a>
+</li>
+
+<li *ngIf="subMenuItems" [attr.aria-expanded]="isOpen" role="menuitem" class="menu__item sub_menu">
+  <span class="sub_menu__title" (click)="toggle()" (keydown.enter)="toggle()" [tabIndex]="mainNavOpen ? tabIndex : -1">
+    {{ name }}
+    <span
+      class="angle"
+      [ngClass]="{ 'angle--open': isOpen }"
+      *ngIf="subMenuItems.length"
+    ></span>
+  </span>
+  <ul
+    *ngIf="subMenuItems.length"
+    aria-label="Dodatkowa nawigacja dla poszczególnych kateogorii"
+    class="sub_menu__list"
+    role="menu"
+    [ngStyle]="{ 'max-height' : isOpen ? subMenuItems.length * 60 + 'px' : '0' }"
+  >
+    <app-navigation-tile
+      *ngFor="let subMenuItem of subMenuItems"
+      [navItemProperty]="subMenuItem"
+      [mainNavOpen]="isOpen"
+      (onLinkClick)="onLinkClick.emit($event)"
+    ></app-navigation-tile>
+  </ul>
+</li>
+
+
+<ng-template #externalLink>
+  <a
+    [href]="slug"
+    [tabIndex]="mainNavOpen ? tabIndex : -1"
+    target="_blank"
+    role="menuitem"
+    class="menu__item__link">
+    {{ name }}
+  </a>
+</ng-template>

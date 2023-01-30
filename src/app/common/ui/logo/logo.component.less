@@ -1,0 +1,21 @@
+@import "../../styles/common";
+
+:host {
+  height: 60px;
+}
+
+.logo {
+  &__url:focus {
+    outline: 1px var(--color) solid;
+  }
+
+  &__image {
+    width: 60px;
+    height: 60px;
+    position: center;
+    .min-width(@md, {
+      width: 160px;
+      height: 160px;
+    })
+  }
+}

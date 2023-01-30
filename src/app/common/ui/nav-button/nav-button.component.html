@@ -1,0 +1,13 @@
+<button
+  type="button"
+  aria-label="Przycisk nawigacji mobilnej"
+  (click)="toggleNavigation()"
+  [attr.aria-expanded]="menuIsOpen"
+  [ngClass]="{ 'button--open': menuIsOpen }"
+  [tabIndex]="tabIndex"
+  class="button"
+>
+  <span class="button__box">
+    <span class="button__inner"></span>
+  </span>
+</button>
