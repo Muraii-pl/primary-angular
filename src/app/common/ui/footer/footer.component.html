@@ -1,0 +1,39 @@
+<footer aria-label="Stropka strony" class="footer" xmlns="http://www.w3.org/1999/html">
+  <ul aria-label="Lista mniej znaczących postów" class="footer__list">
+    <li *ngFor="let footerPost of footerPostList" class="footer__list__item" >
+      <a [routerLink]="[footerPost.slug]" [tabIndex]="tabIndex"> {{ footerPost.name }}</a>
+    </li>
+  </ul>
+  <div aria-label="Adres i telefon placówki" class="footer__contact">
+    <h4 class="footer__contact__title">Kontakt</h4>
+    <p aria-label="Adres placówski" class="footer__contact__address">
+      Hażlach 43-419 <br>
+      ul. Kościelna 2 <br>
+      Tel: <a href="tel:0338569428" aria-label="Nr. tel do placówki">033 856 94 28</a>
+    </p>
+    <div class="footer__contact__map mapouter" aria-hidden="true">
+      <div class="gmap_canvas">
+        <iframe
+          width="280"
+          height="140"
+          id="gmap_canvas"
+          src="https://maps.google.com/maps?q=szko%C5%82a%20podstawowa%20w%20ha%C5%BClachu&t=k&z=17&ie=UTF8&iwloc=&output=embed"
+          frameborder="0"
+          scrolling="no"
+          marginheight="0"
+          marginwidth="0">
+
+        </iframe>
+        <a href="https://putlocker-is.org">
+          putlocker
+        </a>
+        <br>
+        <style>.mapouter{position:relative;text-align:right;height:140px;width:280px;}</style>
+        <a href="https://www.embedgooglemap.net"></a>
+        <style>.gmap_canvas {overflow:hidden;background:none!important;height:140px;width:280px;}</style></div></div>
+  </div>
+  <div class="footer__copyright" aria-disabled="true">
+    <span class="footer__copyright__main_text"> Coppyright &copy; 2017 - {{ thisYear }} Zespół Szkolno-Przedszkolny w Hażlachu</span>
+    <span class="footer__copyright__author"> Design: Mateusz Głowania</span>
+  </div>
+</footer>
