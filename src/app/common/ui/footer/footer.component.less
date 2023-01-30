@@ -1,0 +1,47 @@
+.footer {
+  width: 100%;
+  padding: 40px 15px;
+  position: relative;
+  background-color: var(--mainColor);
+
+
+  &__list {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+    &__item {
+      color: var(--color);
+      font-size: var(--fontSize);
+      text-decoration: var(--text-decoration);
+      &:focus-within {
+        outline: 1px var(--color) solid;
+      }
+    }
+  }
+  &__copyright {
+    position: absolute;
+    bottom: 8px;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    padding: 0 16px;
+
+    &__main_text {
+      font-size: 10px;
+      color: var(--color);
+      opacity: .5;
+    }
+
+    &__author {
+      font-size: 8px;
+      color: var(--color);
+      opacity: .1;
+    }
+  }
+  &__contact{
+    display: flex;
+    justify-content: center;
+  }
+}
