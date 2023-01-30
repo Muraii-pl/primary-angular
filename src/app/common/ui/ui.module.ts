@@ -7,6 +7,8 @@ import { NavButtonComponent } from './nav-button/nav-button.component';
 import { RouterModule } from '@angular/router';
 import { MainMottoComponent } from './main-motto/main-motto.component';
 import { LoaderComponent } from './loader/loader.component';
+import { SubMenuComponent } from './sub-menu/sub-menu.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -18,11 +20,15 @@ import { LoaderComponent } from './loader/loader.component';
     NavButtonComponent,
     MainMottoComponent,
     LoaderComponent,
+    SubMenuComponent,
+    FooterComponent,
 
   ],
   exports: [
     NavigationComponent,
-    LoaderComponent
+    LoaderComponent,
+    SubMenuComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,

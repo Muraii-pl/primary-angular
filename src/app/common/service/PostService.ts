@@ -3,6 +3,7 @@ import { ApiService } from './ApiService';
 import { HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ICategoryPost } from '../interfaces/ICategoryPost';
+import { IPost } from '../interfaces/IPost';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,16 @@ export class PostService {
       }
     })
 
+    return this._apiService.get(`${this._baseUrl}`, param)
+  }
+
+  public getPinnedPost(): Observable<IPost[]> {
+
+    const param = new HttpParams( {
+      fromObject: {
+        sticky: true
+      }
+    })
     return this._apiService.get(`${this._baseUrl}`, param)
   }
 }

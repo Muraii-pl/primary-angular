@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './ApiService';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { INavigationList } from '../interfaces/INavigationList';
+import { IPost } from '../interfaces/IPost';
+import { HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +11,7 @@ import { INavigationList } from '../interfaces/INavigationList';
 export class NavService {
 
   private readonly _baseUrl = '/categories'
+  private _navList = new Subject<INavigationList[]>();
 
   constructor(
     private readonly _apiService: ApiService
@@ -21,4 +24,23 @@ export class NavService {
   public getCategoryById(id: number): Observable<any> {
     return this._apiService.get(`${this._baseUrl}/${id}`)
   }
+
+  public getCategoryBySlug(slug: string): Observable<IPost[]> {
+
+    const param = new HttpParams( {
+      fromObject: {
+        slug: slug
+      }
+    })
+    return this._apiService.get(`${this._baseUrl}`, param)
+  }
+
+  public setNavList(navList: INavigationList[]): void {
+    this._navList.next(navList);
+  }
+
+  public getNavList(): Observable<INavigationList[]> {
+    return this._navList.asObservable();
+  }
+
 }

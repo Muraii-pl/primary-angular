@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { environment } from '../../../../environments/environment';
+import { TabIndexService } from '../../service/TabIndexService';
 
 @Component({
   selector: 'app-logo',
@@ -13,11 +14,18 @@ export class LogoComponent implements OnInit {
   public readonly logoUrl = `${environment.imagesUrl}assets/images/logo.png`
   public readonly logoText = "Logo - Zespół Szkolno-Przedszkolny w Hażlachu"
   public readonly linkToHome = environment.homeUrl
-  public readonly tabIndex = 1;
+  public tabIndex: number;
 
-  constructor() { }
+  constructor(
+    private readonly _tabIndexService: TabIndexService,
+    private readonly _cdr: ChangeDetectorRef,
+  ) { }
 
   public ngOnInit(): void {
+    this._tabIndexService.getTabIndex('logo').subscribe((tabIndex) => {
+      this.tabIndex = tabIndex;
+      this._cdr.detectChanges();
+    })
   }
 
 }
