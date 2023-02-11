@@ -11,6 +11,7 @@ export class TabIndexService {
     navButton: 1,
     navItem: 2,
     subMenuItem: -1,
+    postBoxLink: -1,
     footerItem: -1,
   }
   private _tabIndexNavIsClose = {
@@ -18,7 +19,8 @@ export class TabIndexService {
     navButton: 1,
     navItem: 2,
     subMenuItem: 3,
-    footerItem: 4,
+    postBoxLink: 4,
+    footerItem: 5,
   }
 
   private _tabIndex: BehaviorSubject<{[key: string]: number}> =

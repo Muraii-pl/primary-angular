@@ -15,8 +15,5 @@ export class AppComponent implements OnInit {
   }
 
  public ngOnInit():void {
-    this._apiService.get('/posts').subscribe(res => {
-      console.log(res)
-    })
  }
 }

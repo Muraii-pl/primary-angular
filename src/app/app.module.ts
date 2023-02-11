@@ -6,6 +6,9 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { UiModule } from './common/ui/ui.module';
 import { AppRoutingModule } from './app-routing.module';
 import { LoadingInterceptor } from './common/interceptors/loading.interceptor';
+import { CommonModule } from '@angular/common';
+import { PostsModule } from './posts/posts.module';
+
 
 @NgModule({
   declarations: [
@@ -15,13 +18,16 @@ import { LoadingInterceptor } from './common/interceptors/loading.interceptor';
     BrowserModule,
     HttpClientModule,
     UiModule,
-    AppRoutingModule
+    PostsModule,
+    AppRoutingModule,
+    CommonModule
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true
     }
   ],
+  exports: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

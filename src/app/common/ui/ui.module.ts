@@ -9,6 +9,8 @@ import { MainMottoComponent } from './main-motto/main-motto.component';
 import { LoaderComponent } from './loader/loader.component';
 import { SubMenuComponent } from './sub-menu/sub-menu.component';
 import { FooterComponent } from './footer/footer.component';
+import { PostBoxComponent } from './post-box/post-box.component';
+import { BipComponent } from './bip/bip.component';
 
 
 
@@ -22,13 +24,16 @@ import { FooterComponent } from './footer/footer.component';
     LoaderComponent,
     SubMenuComponent,
     FooterComponent,
+    PostBoxComponent,
+    BipComponent
 
   ],
   exports: [
     NavigationComponent,
     LoaderComponent,
     SubMenuComponent,
-    FooterComponent
+    FooterComponent,
+    PostBoxComponent
   ],
   imports: [
     CommonModule,

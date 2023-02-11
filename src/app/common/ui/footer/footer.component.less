@@ -9,15 +9,18 @@
     display: grid;
     width: 100%;
     grid-template-columns: 1fr 1fr;
+
     &__item {
       color: var(--color);
       font-size: var(--fontSize);
       text-decoration: var(--text-decoration);
+
       &:focus-within {
         outline: 1px var(--color) solid;
       }
     }
   }
+
   &__copyright {
     position: absolute;
     bottom: 8px;
@@ -40,8 +43,24 @@
       opacity: .1;
     }
   }
-  &__contact{
+
+  &__contact {
     display: flex;
     justify-content: center;
+    flex-flow: column wrap;
+    color: var(--color);
+
+    &__title {
+      font-size: calc(var(--fontSize) * 1.2);
+    }
+
+    &__address {
+      margin-top: 10px;
+      font-size: var(--fontSize);
+
+      &__map {
+        align-self: flex-start;
+      }
+    }
   }
 }

@@ -1,3 +1,8 @@
-<main class="main_element__wrapper" aria-label="Główna zawartość">
+<ng-container *ngIf="(postDetails$ | async) as postDetails">
+  <main class="main_element__wrapper" aria-label="Główna zawartość">
+    <img src="">
+    <section [innerHTML]="postDetails.formattedContent">
 
-</main>
+    </section>
+  </main>
+</ng-container>

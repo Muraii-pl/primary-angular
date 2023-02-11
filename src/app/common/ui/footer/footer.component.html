@@ -3,6 +3,9 @@
     <li *ngFor="let footerPost of footerPostList" class="footer__list__item" >
       <a [routerLink]="[footerPost.slug]" [tabIndex]="tabIndex"> {{ footerPost.name }}</a>
     </li>
+      <li *ngFor="let footerPost of subPostList" class="footer__list__item" >
+        <a [routerLink]="[footerPost.slug]" [tabIndex]="tabIndex"> {{ footerPost.name }}</a>
+      </li>
   </ul>
   <div aria-label="Adres i telefon placówki" class="footer__contact">
     <h4 class="footer__contact__title">Kontakt</h4>
@@ -11,7 +14,7 @@
       ul. Kościelna 2 <br>
       Tel: <a href="tel:0338569428" aria-label="Nr. tel do placówki">033 856 94 28</a>
     </p>
-    <div class="footer__contact__map mapouter" aria-hidden="true">
+    <div class="footer__contact__map mapouter" aria-hidden="true" tabindex="-1" aria-disabled="true">
       <div class="gmap_canvas">
         <iframe
           width="280"
@@ -24,13 +27,10 @@
           marginwidth="0">
 
         </iframe>
-        <a href="https://putlocker-is.org">
-          putlocker
-        </a>
-        <br>
-        <style>.mapouter{position:relative;text-align:right;height:140px;width:280px;}</style>
-        <a href="https://www.embedgooglemap.net"></a>
-        <style>.gmap_canvas {overflow:hidden;background:none!important;height:140px;width:280px;}</style></div></div>
+        <style>.mapouter{position:relative;text-align:right;height:140px;width:280px;}</style>;
+        <style>.gmap_canvas {overflow:hidden;background:none!important;height:140px;width:280px;}</style>
+      </div>
+    </div>
   </div>
   <div class="footer__copyright" aria-disabled="true">
     <span class="footer__copyright__main_text"> Coppyright &copy; 2017 - {{ thisYear }} Zespół Szkolno-Przedszkolny w Hażlachu</span>

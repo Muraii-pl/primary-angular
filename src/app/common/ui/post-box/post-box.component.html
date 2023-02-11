@@ -1,0 +1,30 @@
+<article role="article" aria-label="Przypięty post" class="post">
+  <img *ngIf="postProperty.image.url"
+       [src]="postProperty.image.url"
+       role="img"
+       aria-label="Obrazek wyróżniający dany post"
+       [title]="postProperty.image.title"
+       [alt]="postProperty.image.title"
+       class="post__image"
+  >
+  <h1 role="heading"
+      aria-label="Nazwa postu"
+      class="post__title"
+  >
+    {{ postProperty.name }}
+  </h1>
+  <section aria-label="Skrócona treść postu"
+           class="post__shortedContent"
+           [innerHTML]="postProperty.shortedContent">
+  </section>
+  <footer aria-label="Stopka postu" class="post__footer">
+    <a [routerLink]="['post', postProperty.id]"
+       role="link"
+       aria-label="Link do całego postu"
+       class="post__footer_link"
+       [tabIndex]="tabIndex"
+    >
+      Pokaż więcej
+    </a>
+  </footer>
+</article>

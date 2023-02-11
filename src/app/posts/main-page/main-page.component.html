@@ -1,0 +1,3 @@
+<ng-container *ngIf="(pinnedPostList$ | async) as pinnedPostList">
+  <app-post-box *ngFor="let postItem of pinnedPostList" [postProperty]="postItem"></app-post-box>
+</ng-container>

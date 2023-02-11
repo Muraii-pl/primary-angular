@@ -1,13 +1,14 @@
 <aside aria-label="Dodatkowa nawigacja">
   <nav>
     <ul aria-label="Lista ważnych postów" class="post_list">
-      <li *ngFor="let postItem of subMenuPostList" aria-label="Odnośnik do postu" class="post_list__item">
+      <li *ngFor="let postItem of subMenuPostList" aria-label="Odnośnik do postu" class="post_list__item"
+         >
         <a
           [routerLink]="[postItem.slug]"
           [tabIndex]="tabIndex"
           class="post_list__item_link"
+          [innerHTML]="postItem.name"
         >
-          {{ postItem.name }}
         </a>
       </li>
     </ul>
