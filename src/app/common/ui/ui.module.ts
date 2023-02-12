@@ -11,6 +11,8 @@ import { SubMenuComponent } from './sub-menu/sub-menu.component';
 import { FooterComponent } from './footer/footer.component';
 import { PostBoxComponent } from './post-box/post-box.component';
 import { BipComponent } from './bip/bip.component';
+import { FullScreenGalleryComponent } from './full-screen-gallery/full-screen-gallery.component';
+import { BaseModalComponent } from './base-modal/base-modal.component';
 
 
 
@@ -25,7 +27,9 @@ import { BipComponent } from './bip/bip.component';
     SubMenuComponent,
     FooterComponent,
     PostBoxComponent,
-    BipComponent
+    BipComponent,
+    FullScreenGalleryComponent,
+    BaseModalComponent
 
   ],
   exports: [

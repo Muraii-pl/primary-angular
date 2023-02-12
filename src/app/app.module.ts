@@ -20,7 +20,7 @@ import { PostsModule } from './posts/posts.module';
     UiModule,
     PostsModule,
     AppRoutingModule,
-    CommonModule
+    CommonModule,
   ],
   providers: [
     {

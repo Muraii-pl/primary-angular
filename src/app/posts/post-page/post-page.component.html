@@ -1,7 +1,13 @@
 <ng-container *ngIf="(postDetails$ | async) as postDetails">
   <main class="main_element__wrapper" aria-label="Główna zawartość">
-    <img src="">
-    <section [innerHTML]="postDetails.formattedContent">
+    <div class="main_element__title"
+         [ngStyle]="{ 'background-image': postDetails.image.url ? 'url(' + postDetails.image.url + ')' : '' }"
+    >
+      <h1 class="main_element__title__text"
+          [class.main_element__title__text--withBackground]="postDetails.image.url"
+         >{{ postDetails.name }}</h1>
+    </div>
+    <section [innerHTML]="postDetails.formattedContent" class="main_element__content">
 
     </section>
   </main>

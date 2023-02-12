@@ -1,0 +1,21 @@
+<div class="modal">
+  <div class="modal__wrapper" role="dialog">
+    <div class="modal__header">
+      <div class="modal__header__title">{{ title }}</div>
+      <div class="modal__header__button_wrapper">
+        <button role="button"
+                type="button"
+                aria-label="Zamknij wyskakujące okno"
+                class="modal__header__button"
+                (click)="onClose()"
+        >
+          <span class="modal__header__button__bar modal__header__button__bar--first"></span>
+          <span class="modal__header__button__bar modal__header__button__bar--second"></span>
+        </button>
+      </div>
+    </div>
+    <div class="modal__content">
+      <ng-template #modalTemplate></ng-template>
+    </div>
+  </div>
+</div>

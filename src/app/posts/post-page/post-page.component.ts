@@ -1,8 +1,18 @@
-import { ChangeDetectionStrategy, Component, NgZone, OnInit, ViewEncapsulation } from '@angular/core';
+import {
+  AfterContentChecked, AfterViewChecked,
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  NgZone,
+  OnInit, Renderer2,
+  ViewEncapsulation
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PostService } from '../../common/service/PostService';
 import { IPost } from '../../common/interfaces/IPost';
 import { map, Observable } from 'rxjs';
+import { ModalService } from '../../common/service/ModalService';
+import { FullScreenGalleryComponent } from '../../common/ui/full-screen-gallery/full-screen-gallery.component';
 
 @Component({
   selector: 'app-post-page',
@@ -11,18 +21,25 @@ import { map, Observable } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None
 })
-export class PostPageComponent implements OnInit {
+export class PostPageComponent implements OnInit, AfterViewChecked {
 
   public postDetails$: Observable<IPost>;
+
+  private _postId: number;
+  private firstRender = false;
+
   constructor(
     private readonly _route: ActivatedRoute,
     private readonly _postService: PostService,
     private readonly _zone: NgZone,
-  ) { }
+    private readonly _modalService: ModalService,
+    private readonly _renderer2: Renderer2
+  ) {
+  }
 
   public ngOnInit(): void {
-    console.log(this._zone)
-    this._route.params.subscribe(({ id }) => {
+    this._route.params.subscribe(({id}) => {
+      this._postId = id;
       this.postDetails$ = this._postService.getPostDetails(id).pipe(
         map((postDetails: IPost) => {
           return {
@@ -43,4 +60,34 @@ export class PostPageComponent implements OnInit {
     })
   }
 
+  public ngAfterViewChecked(): void {
+
+    const imageNodeList = document.querySelectorAll<HTMLImageElement>('.wp-block-image img')
+    const urlImage: { src: string, altText: string}[] = []
+
+    if (!this.firstRender && imageNodeList.length) {
+
+      imageNodeList.forEach((imageElement: HTMLImageElement, index: number) => {
+        urlImage.push({
+          src: imageElement.src,
+          altText: imageElement.alt
+        })
+        this._renderer2.listen(imageElement, 'click', this.openModalGallery.bind(this,
+          urlImage, index))
+      })
+
+      this.firstRender = true;
+    }
+
+  }
+
+  public openModalGallery(urlImageList: { src: string, altText: string}[], clickedElementIdx: number): void {
+    this._modalService.openModal(FullScreenGalleryComponent, {
+      data: {
+        urlImageList,
+        clickedElementIdx
+      },
+      title: 'Podgląd zdjęć'
+    })
+  }
 }
