@@ -18,7 +18,7 @@ export class SubMenuComponent implements OnInit {
   public tabIndex: number;
 
   private _subMenuId: number;
-  private _orginalSubMenuPostList: IPost[]
+  private _originalSubMenuPostList: IPost[]
   private readonly _categorySlug = 'sub-menu'
 
   constructor(
@@ -40,7 +40,7 @@ export class SubMenuComponent implements OnInit {
     this._navService.getNavList().subscribe((res: INavigationList[]) => {
       this._subMenuId = res.find((item: INavigationList) => item.slug === this._categorySlug).id;
       this._postService.getPostListByCategoryId(this._subMenuId).subscribe((res:ICategoryPost[]) => {
-        this._orginalSubMenuPostList = res.map((post: ICategoryPost) => {
+        this._originalSubMenuPostList = res.map((post: ICategoryPost) => {
           return {
             name: post.title.rendered,
             slug: post.slug,
@@ -48,9 +48,9 @@ export class SubMenuComponent implements OnInit {
             categories: post.categories
           }
         })
-        this._orginalSubMenuPostList.unshift({
+        this._originalSubMenuPostList.unshift({
           name: 'Aktualności',
-          slug: '',
+          slug: 'aktualnosci',
           id: -1,
           categories: [-1]
         })
@@ -62,17 +62,17 @@ export class SubMenuComponent implements OnInit {
   @HostListener('window:resize')
   private setOtherItemInMenu(): void {
     if(innerWidth < 480) {
-      this._postService.setSubMenuList(this._orginalSubMenuPostList.slice(2))
-      this.subMenuPostList = this._orginalSubMenuPostList.slice(0,2)
+      this._postService.setSubMenuList(this._originalSubMenuPostList.slice(2))
+      this.subMenuPostList = this._originalSubMenuPostList.slice(0,2)
     } else if (innerWidth >= 480 && innerWidth < 640) {
-      this._postService.setSubMenuList(this._orginalSubMenuPostList.slice(3))
-      this.subMenuPostList = this._orginalSubMenuPostList.slice(0,3)
+      this._postService.setSubMenuList(this._originalSubMenuPostList.slice(3))
+      this.subMenuPostList = this._originalSubMenuPostList.slice(0,3)
     } else if (innerWidth >= 640 && innerWidth < 720) {
-      this._postService.setSubMenuList(this._orginalSubMenuPostList.slice(4))
-      this.subMenuPostList = this._orginalSubMenuPostList.slice(0,4)
+      this._postService.setSubMenuList(this._originalSubMenuPostList.slice(4))
+      this.subMenuPostList = this._originalSubMenuPostList.slice(0,4)
     } else {
       this._postService.setSubMenuList([])
-      this.subMenuPostList = this._orginalSubMenuPostList;
+      this.subMenuPostList = this._originalSubMenuPostList;
     }
     this._cdr.detectChanges()
   }

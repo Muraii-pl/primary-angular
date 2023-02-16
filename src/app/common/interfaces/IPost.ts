@@ -1,3 +1,5 @@
+import { SafeValue } from '@angular/platform-browser';
+
 export interface IPost {
   title?: {
     rendered: string
@@ -10,7 +12,7 @@ export interface IPost {
     protected: boolean;
     rendered: string;
   };
-  formattedContent?: string;
+  formattedContent?: string | SafeValue;
   category?: string;
   date?: string;
   author?: string;

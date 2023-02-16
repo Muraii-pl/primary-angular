@@ -1,46 +1,25 @@
 import {
-  ChangeDetectionStrategy,
   Component,
-  ComponentRef, Input,
-  OnInit,
-  ViewChild,
-  ViewContainerRef,
-  ViewRef
+  EventEmitter,
+  Input,
+  OnInit, Output,
 } from '@angular/core';
-import { Subject } from 'rxjs';
+import { TabIndexService } from '../../service/TabIndexService';
 
 @Component({
   selector: 'app-base-modal',
   templateUrl: './base-modal.component.html',
   styleUrls: ['./base-modal.component.less'],
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class BaseModalComponent<T = any> implements OnInit {
+export class BaseModalComponent implements OnInit {
+ @Input() title: string;
+ @Output() closeModal =new EventEmitter<void>();
 
-  @ViewChild('modalTemplate', { read: ViewContainerRef, static: true }) public modalTemplateRef: ViewContainerRef;
+  constructor(
+    private readonly _tabIndexService: TabIndexService
+  ) {}
 
-  @Input() set Data(data) {
-    if (data) {
-      this.contentModalInstance.instance.Data = data
-    }
-  };
- public title: string;
- public contentModalInstance: ComponentRef<any>;
-
-  public onClose$: Subject<boolean> = new Subject<boolean>()
-  constructor() {}
-
-  public ngOnInit(): void {}
-
-  public set setChildComponent(component) {
-    this.contentModalInstance = this.modalTemplateRef.createComponent(component)
-
+  public ngOnInit(): void {
   }
-
-  public onClose(): void {
-    this.onClose$.next(true)
-  }
-
-
 
 }

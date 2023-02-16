@@ -6,7 +6,7 @@
 >
   <a
     *ngIf="name !== 'E-dziennik'; else externalLink"
-    [routerLink]="['/post', slug]"
+    [routerLink]="['/post', postId]"
     class="menu__item__link"
     [tabIndex]="mainNavOpen ? tabIndex : -1"
   >
@@ -29,7 +29,7 @@
 </li>
 
 <li *ngIf="subMenuItems" [attr.aria-expanded]="isOpen" role="menuitem" class="menu__item sub_menu">
-  <span class="sub_menu__title" (click)="toggle()" (keydown.enter)="toggle()" [tabIndex]="mainNavOpen ? tabIndex : -1">
+  <span class="sub_menu__title" (click)="toggle()" (focus)="toggle()" [tabIndex]="mainNavOpen ? tabIndex : -1">
     {{ name }}
     <span
       class="angle"

@@ -1,5 +1,6 @@
 export interface ICategoryPost {
   id?: number;
+  postId?: number;
   date?: Date;
   date_gmt?: Date;
   guid?: GUID;

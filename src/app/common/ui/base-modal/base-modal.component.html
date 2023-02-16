@@ -1,5 +1,5 @@
-<div class="modal">
-  <div class="modal__wrapper" role="dialog">
+<div class="modal" role="dialog" appTrapFocus>
+  <div class="modal__wrapper">
     <div class="modal__header">
       <div class="modal__header__title">{{ title }}</div>
       <div class="modal__header__button_wrapper">
@@ -7,7 +7,9 @@
                 type="button"
                 aria-label="Zamknij wyskakujące okno"
                 class="modal__header__button"
-                (click)="onClose()"
+                (click)="closeModal.emit()"
+                [tabIndex]="1"
+                autofocus
         >
           <span class="modal__header__button__bar modal__header__button__bar--first"></span>
           <span class="modal__header__button__bar modal__header__button__bar--second"></span>
@@ -15,7 +17,7 @@
       </div>
     </div>
     <div class="modal__content">
-      <ng-template #modalTemplate></ng-template>
+      <ng-content></ng-content>
     </div>
   </div>
 </div>

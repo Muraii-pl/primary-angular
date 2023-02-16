@@ -1,10 +1,10 @@
 <footer aria-label="Stropka strony" class="footer" xmlns="http://www.w3.org/1999/html">
   <ul aria-label="Lista mniej znaczących postów" class="footer__list">
     <li *ngFor="let footerPost of footerPostList" class="footer__list__item" >
-      <a [routerLink]="[footerPost.slug]" [tabIndex]="tabIndex"> {{ footerPost.name }}</a>
+      <a [routerLink]="[footerPost.slug]" [tabIndex]="tabIndex" [innerHTML]="footerPost.name"> {{ footerPost.name }}</a>
     </li>
       <li *ngFor="let footerPost of subPostList" class="footer__list__item" >
-        <a [routerLink]="[footerPost.slug]" [tabIndex]="tabIndex"> {{ footerPost.name }}</a>
+        <a [routerLink]="[footerPost.slug]" [tabIndex]="tabIndex" [innerHTML]="footerPost.name"> {{ footerPost.name }}</a>
       </li>
   </ul>
   <div aria-label="Adres i telefon placówki" class="footer__contact">

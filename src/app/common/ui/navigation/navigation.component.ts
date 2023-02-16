@@ -1,17 +1,15 @@
 import {
-  AfterViewChecked,
   AfterViewInit, ChangeDetectorRef,
   Component,
-  ComponentRef, ElementRef, HostListener,
-  Input,
+  ElementRef,
+
   OnInit,
   QueryList, ViewChild,
   ViewChildren
 } from '@angular/core';
 import { INavigation } from '../../interfaces/INavigation';
-import { ApiService } from '../../service/ApiService';
 import { NavService } from '../../service/NavService';
-import { filter, map } from 'rxjs';
+import {  map } from 'rxjs';
 import { INavigationList } from '../../interfaces/INavigationList';
 import { NavigationTileComponent } from '../navigation-tile/navigation-tile.component';
 import { TabIndexService } from '../../service/TabIndexService';

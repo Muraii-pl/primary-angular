@@ -1,3 +1,4 @@
+@import "../../common/styles/_mixins";
 .main_element {
   &__title {
     display: flex;
@@ -23,10 +24,12 @@
   }
   &__content {
     margin-top: 36px;
+    .image_from_wp__mixin()
   }
 
     &__wrapper {
       padding: 16px;
+
 
 
     .wp-block {
@@ -34,7 +37,8 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
         gap: 16px;
-        margin: 0;
+        width: unset;
+        height: unset;
       }
 
       &-image {

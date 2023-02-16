@@ -13,6 +13,7 @@ import { PostBoxComponent } from './post-box/post-box.component';
 import { BipComponent } from './bip/bip.component';
 import { FullScreenGalleryComponent } from './full-screen-gallery/full-screen-gallery.component';
 import { BaseModalComponent } from './base-modal/base-modal.component';
+import { TrapFocusDirective } from '../directives/trap-focus.directive';
 
 
 
@@ -37,11 +38,14 @@ import { BaseModalComponent } from './base-modal/base-modal.component';
     LoaderComponent,
     SubMenuComponent,
     FooterComponent,
-    PostBoxComponent
+    PostBoxComponent,
+    BaseModalComponent,
+    FullScreenGalleryComponent
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    TrapFocusDirective
   ]
 })
 export class UiModule { }

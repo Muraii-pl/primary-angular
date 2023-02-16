@@ -3,4 +3,7 @@ export interface INavigationItem {
   name: string;
   isLink?: boolean;
   isPage?: boolean;
+  id?: number;
+  postId?: number;
+
 }

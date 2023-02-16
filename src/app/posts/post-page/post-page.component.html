@@ -7,8 +7,16 @@
           [class.main_element__title__text--withBackground]="postDetails.image.url"
          >{{ postDetails.name }}</h1>
     </div>
-    <section [innerHTML]="postDetails.formattedContent" class="main_element__content">
+    <section [innerHTML]="postDetails.formattedContent" class="main_element__content" #mainSection>
 
     </section>
   </main>
+</ng-container>
+
+<ng-container *ngIf="+selectedIndex > -1">
+  <app-full-screen-gallery
+    [(selectedImage)]="selectedIndex"
+    [setImageList]="urlImages"
+  >
+  </app-full-screen-gallery>
 </ng-container>

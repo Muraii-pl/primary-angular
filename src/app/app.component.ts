@@ -1,6 +1,5 @@
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiService } from './common/service/ApiService';
-import { ModalService } from './common/service/ModalService';
 
 @Component({
   selector: 'app-root',
@@ -12,10 +11,8 @@ export class AppComponent implements OnInit {
 
   constructor(
     private readonly _apiService: ApiService,
-    private readonly modalService: ModalService,
-    public viewRef: ViewContainerRef,
   ) {
-    this.modalService.setContainerElementViewRef(this.viewRef)
+
   }
 
  public ngOnInit():void {

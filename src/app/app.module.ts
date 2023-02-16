@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { LoadingInterceptor } from './common/interceptors/loading.interceptor';
 import { CommonModule } from '@angular/common';
 import { PostsModule } from './posts/posts.module';
+import { TrapFocusDirective } from './common/directives/trap-focus.directive';
 
 
 @NgModule({
@@ -21,13 +22,15 @@ import { PostsModule } from './posts/posts.module';
     PostsModule,
     AppRoutingModule,
     CommonModule,
+    TrapFocusDirective
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true
     }
   ],
-  exports: [],
+  exports: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

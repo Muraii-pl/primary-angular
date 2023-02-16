@@ -4,7 +4,7 @@
       <li *ngFor="let postItem of subMenuPostList" aria-label="Odnośnik do postu" class="post_list__item"
          >
         <a
-          [routerLink]="[postItem.slug]"
+          [routerLink]="[postItem.slug === 'aktualnosci' ? postItem.slug : postItem.id]"
           [tabIndex]="tabIndex"
           class="post_list__item_link"
           [innerHTML]="postItem.name"

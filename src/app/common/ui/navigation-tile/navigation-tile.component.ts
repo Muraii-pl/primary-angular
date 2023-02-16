@@ -13,12 +13,13 @@ import { TabIndexService } from '../../service/TabIndexService';
 })
 export class NavigationTileComponent implements OnInit {
 
-  @Input() set navItemProperty(navItem) {
-    const { name, slug, isLink, id, isPage } = navItem
+  @Input() set navItemProperty(navItem: INavigationItem) {
+    const { name, slug, isLink, id, isPage, postId } = navItem
     this.name = name;
     this.slug = slug;
     this.isLink = isLink
     this.id = id;
+    this.postId = postId;
     this.isPage = isPage;
     if (this.id) {
       this.getSubNavList();
@@ -34,6 +35,7 @@ export class NavigationTileComponent implements OnInit {
   public isLink: boolean;
   public isPage: boolean;
   public id: number;
+  public postId: number;
   public subMenuItems: INavigationItem [];
   public tabIndex: number;
 
@@ -41,7 +43,8 @@ export class NavigationTileComponent implements OnInit {
     private readonly _navService: NavService,
     private readonly _postService: PostService,
     private readonly _cdr: ChangeDetectorRef,
-    private readonly _tabIndexService: TabIndexService
+    private readonly _tabIndexService: TabIndexService,
+    
   ) { }
 
   public ngOnInit(): void {
@@ -58,7 +61,8 @@ export class NavigationTileComponent implements OnInit {
           return {
             slug: item['slug'],
             name: item['title']['rendered'],
-            isLink: true
+            isLink: true,
+            postId: item.id
           }
         })
       })

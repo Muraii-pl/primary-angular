@@ -1,34 +1,39 @@
-<div class="full_screen_gallery">
-  <div class="full_screen_gallery__arrow__wrapper">
-    <button type="button"
-            role="button"
-            aria-label="Poprzednie zdjęcie"
-            class="full_screen_gallery__arrow full_screen_gallery__arrow_prev"
-            (click)="prevImage()"
-    >
-    </button>
-    <button
-      type="button"
-      role="button"
-      aria-label="Następne zdjęcie"
-      class="full_screen_gallery__arrow full_screen_gallery__arrow_next"
-      (click)="nextImage()"
-    >
-    </button>
-  </div>
-  <div class="full_screen_gallery__image__wrapper">
-    <a [href]="imageList[selectedImageIndex].src"
-       target="_blank"
-       role="link"
-       aria-label="Zdjęcie w pełnym wymiarze"
-       title="Kliknij by otworzyć zdjęcie w nowej karcie"
-    >
-      <img [src]="imageList[selectedImageIndex].src"
-           [alt]="imageList[selectedImageIndex].altText"
-           role="img"
-           aria-label="Zdjęcie z galeri"
-           class="full_screen_gallery__image"
+<app-base-modal
+  (closeModal)="closeModal()"
+  [title]="title"
+>
+  <div class="full_screen_gallery">
+    <div class="full_screen_gallery__arrow__wrapper">
+      <button type="button"
+              role="button"
+              aria-label="Poprzednie zdjęcie"
+              class="full_screen_gallery__arrow full_screen_gallery__arrow_prev"
+              (click)="prevImage()"
       >
-    </a>
+      </button>
+      <button
+        type="button"
+        role="button"
+        aria-label="Następne zdjęcie"
+        class="full_screen_gallery__arrow full_screen_gallery__arrow_next"
+        (click)="nextImage()"
+      >
+      </button>
+    </div>
+    <div class="full_screen_gallery__image__wrapper">
+      <a [href]="imageList[selectedImageIndex].src"
+         target="_blank"
+         role="link"
+         aria-label="Zdjęcie w pełnym wymiarze"
+         title="Kliknij by otworzyć zdjęcie w nowej karcie"
+      >
+        <img [src]="imageList[selectedImageIndex].src"
+             [alt]="imageList[selectedImageIndex].altText"
+             role="img"
+             aria-label="Zdjęcie z galeri"
+             class="full_screen_gallery__image"
+        >
+      </a>
+    </div>
   </div>
-</div>
+</app-base-modal>
