@@ -4,7 +4,6 @@ import { IPost } from '../../interfaces/IPost';
 import { NavService } from '../../service/NavService';
 import { INavigationList } from '../../interfaces/INavigationList';
 import { ICategoryPost } from '../../interfaces/ICategoryPost';
-import { TabIndexService } from '../../service/TabIndexService';
 
 @Component({
   selector: 'app-sub-menu',
@@ -15,8 +14,6 @@ import { TabIndexService } from '../../service/TabIndexService';
 export class SubMenuComponent implements OnInit {
 
   public subMenuPostList: IPost[];
-  public tabIndex: number;
-
   private _subMenuId: number;
   private _originalSubMenuPostList: IPost[]
   private readonly _categorySlug = 'sub-menu'
@@ -25,7 +22,7 @@ export class SubMenuComponent implements OnInit {
     private readonly _cdr: ChangeDetectorRef,
     private readonly _postService: PostService,
     private readonly _navService: NavService,
-    private readonly _tabIndexService: TabIndexService
+
   ) { }
 
   //   480px - 3 elem
@@ -33,10 +30,6 @@ export class SubMenuComponent implements OnInit {
   //   720px - cała lista
 
   public ngOnInit(): void {
-    this._tabIndexService.getTabIndex('subMenuItem').subscribe((tabIndex) => {
-      this.tabIndex = tabIndex;
-      this._cdr.detectChanges();
-    })
     this._navService.getNavList().subscribe((res: INavigationList[]) => {
       this._subMenuId = res.find((item: INavigationList) => item.slug === this._categorySlug).id;
       this._postService.getPostListByCategoryId(this._subMenuId).subscribe((res:ICategoryPost[]) => {

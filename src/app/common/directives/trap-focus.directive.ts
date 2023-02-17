@@ -2,7 +2,8 @@ import { AfterViewInit, Directive, ElementRef } from '@angular/core';
 
 @Directive({
   selector: '[appTrapFocus]',
-  standalone: true
+  standalone: true,
+
 })
 export class TrapFocusDirective implements AfterViewInit {
 
@@ -11,16 +12,15 @@ export class TrapFocusDirective implements AfterViewInit {
   ) { }
 
   public ngAfterViewInit():void {
-    console.log(this._elementRef.nativeElement)
     this.trapFocus(this._elementRef.nativeElement)
   }
 
-  private trapFocus(elem): void {
+  private trapFocus(elem: HTMLElement): void {
 
     const focusableEls1 = elem.querySelectorAll(
-      'a[href], button, textarea, input[type="text"],' +
-      'input[type="radio"], input[type="checkbox"], select'
+      'a[href], button, textarea, input[type="text"], input[type="radio"], input[type="checkbox"], select'
     );
+
     const focusableEls = Array.from(focusableEls1)
     .filter( (el: any) => !el.disabled);
     const firstFocusableEl: any = focusableEls[0];

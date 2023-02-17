@@ -4,7 +4,6 @@ import {
   Input,
   OnInit, Output,
 } from '@angular/core';
-import { TabIndexService } from '../../service/TabIndexService';
 
 @Component({
   selector: 'app-base-modal',
@@ -16,7 +15,6 @@ export class BaseModalComponent implements OnInit {
  @Output() closeModal =new EventEmitter<void>();
 
   constructor(
-    private readonly _tabIndexService: TabIndexService
   ) {}
 
   public ngOnInit(): void {

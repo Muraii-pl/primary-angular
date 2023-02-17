@@ -8,7 +8,7 @@
     *ngIf="name !== 'E-dziennik'; else externalLink"
     [routerLink]="['/post', postId]"
     class="menu__item__link"
-    [tabIndex]="mainNavOpen ? tabIndex : -1"
+
   >
     {{ name }}
   </a>
@@ -21,7 +21,7 @@
 >
   <a
     [routerLink]="['/', slug]"
-    [tabIndex]="mainNavOpen ? tabIndex : -1"
+
     class="menu__item__link"
   >
     {{ name }}
@@ -29,14 +29,14 @@
 </li>
 
 <li *ngIf="subMenuItems" [attr.aria-expanded]="isOpen" role="menuitem" class="menu__item sub_menu">
-  <span class="sub_menu__title" (click)="toggle()" (focus)="toggle()" [tabIndex]="mainNavOpen ? tabIndex : -1">
+  <button class="sub_menu__title" (click)="toggle()" (focus)="toggle()">
     {{ name }}
     <span
       class="angle"
       [ngClass]="{ 'angle--open': isOpen }"
       *ngIf="subMenuItems.length"
     ></span>
-  </span>
+  </button>
   <ul
     *ngIf="subMenuItems.length"
     aria-label="Dodatkowa nawigacja dla poszczególnych kateogorii"
@@ -57,7 +57,7 @@
 <ng-template #externalLink>
   <a
     [href]="slug"
-    [tabIndex]="mainNavOpen ? tabIndex : -1"
+
     target="_blank"
     role="menuitem"
     class="menu__item__link">

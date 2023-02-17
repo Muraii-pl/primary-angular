@@ -12,7 +12,6 @@ import { NavService } from '../../service/NavService';
 import {  map } from 'rxjs';
 import { INavigationList } from '../../interfaces/INavigationList';
 import { NavigationTileComponent } from '../navigation-tile/navigation-tile.component';
-import { TabIndexService } from '../../service/TabIndexService';
 
 @Component({
   selector: 'app-navigation',
@@ -42,7 +41,6 @@ export class NavigationComponent implements OnInit, AfterViewInit {
   constructor(
     private readonly _navService: NavService,
     private readonly _cdr: ChangeDetectorRef,
-    private readonly _tabIndexService: TabIndexService,
   ) { }
 
   public ngOnInit(): void {
@@ -55,7 +53,6 @@ export class NavigationComponent implements OnInit, AfterViewInit {
 
   public toggleNavigation(isNavOpen: boolean): void {
     this.isNavOpen = isNavOpen;
-    this._tabIndexService.setNavOpen(this.isNavOpen)
     const body =  document.querySelector('body')
     if (this.isNavOpen) {
       this.navRef.nativeElement.scrollIntoView({ behavior: 'smooth' })

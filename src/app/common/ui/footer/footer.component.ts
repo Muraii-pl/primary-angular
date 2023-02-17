@@ -1,6 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { IPost } from '../../interfaces/IPost';
-import { TabIndexService } from '../../service/TabIndexService';
 import { Observable, pipe, tap } from 'rxjs';
 import { PostService } from '../../service/PostService';
 
@@ -12,7 +11,6 @@ import { PostService } from '../../service/PostService';
 })
 export class FooterComponent implements OnInit {
 
-  public tabIndex: number;
   public subMenuList$: Observable<IPost[]>
   public subPostList: IPost[]
   public readonly thisYear = new Date().getFullYear();
@@ -54,15 +52,10 @@ export class FooterComponent implements OnInit {
 
   constructor(
     private readonly _cdr: ChangeDetectorRef,
-    private readonly _tabIndexService: TabIndexService,
     private readonly _postService: PostService,
   ) { }
 
   public ngOnInit(): void {
-    this._tabIndexService.getTabIndex('footerItem').subscribe((tabIndex) => {
-      this.tabIndex = tabIndex
-      this._cdr.detectChanges();
-    })
     this._postService.getSubMenuList().subscribe((res: IPost[]) => {
       this.subPostList = res;
       this._cdr.detectChanges();

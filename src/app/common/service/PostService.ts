@@ -59,4 +59,16 @@ export class PostService {
 
     return this._apiService.get(`${this._baseUrl}/${id}`, param)
   }
+
+  public getAllPost(pageSize: number = 10, pageIndex: number = 1): Observable<any> {
+
+    const param = new HttpParams({
+      fromObject: {
+        page: pageIndex,
+        per_page: pageSize
+      }
+    })
+
+    return this._apiService.get(`/private${this._baseUrl}`, param)
+  }
 }

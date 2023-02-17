@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { ApplicationRef, ChangeDetectorRef, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable({
@@ -7,7 +7,7 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 export class LoaderService {
 
   private _isLoading$ = new BehaviorSubject<boolean>(false)
-  constructor() { }
+  constructor(private readonly _appRef: ApplicationRef) { }
 
   public show(): void {
     this._isLoading$.next(true)
@@ -15,6 +15,7 @@ export class LoaderService {
 
   public hide(): void {
     this._isLoading$.next(false)
+    this._appRef.tick();
   }
 
   public getLoaderStatus(): Observable<boolean> {
