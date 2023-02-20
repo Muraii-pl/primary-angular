@@ -1,3 +1,4 @@
-<p [style.height]="'524px'">
-  <span *ngFor="let p of post">{{ p.title }}</span>
-</p>
+<ng-container *ngIf="newsPostList?.length">
+  <app-post-box *ngFor="let postItem of newsPostList" [postProperty]="postItem"></app-post-box>
+  <app-pagination [(currentPage)]="currentPage" [totalPages]="100"></app-pagination>
+</ng-container>

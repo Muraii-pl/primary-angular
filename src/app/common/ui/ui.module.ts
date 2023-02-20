@@ -14,6 +14,7 @@ import { BipComponent } from './bip/bip.component';
 import { FullScreenGalleryComponent } from './full-screen-gallery/full-screen-gallery.component';
 import { BaseModalComponent } from './base-modal/base-modal.component';
 import { TrapFocusDirective } from '../directives/trap-focus.directive';
+import { PaginationComponent } from './pagination/pagination.component';
 
 
 
@@ -30,7 +31,8 @@ import { TrapFocusDirective } from '../directives/trap-focus.directive';
     PostBoxComponent,
     BipComponent,
     FullScreenGalleryComponent,
-    BaseModalComponent
+    BaseModalComponent,
+    PaginationComponent
 
   ],
   exports: [
@@ -40,7 +42,8 @@ import { TrapFocusDirective } from '../directives/trap-focus.directive';
     FooterComponent,
     PostBoxComponent,
     BaseModalComponent,
-    FullScreenGalleryComponent
+    FullScreenGalleryComponent,
+    PaginationComponent
   ],
   imports: [
     CommonModule,

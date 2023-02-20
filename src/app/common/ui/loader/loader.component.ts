@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, Renderer2 } from '@angular/core';
 import { LoaderService } from '../../service/LoaderService';
 import { Observable, Subject, Subscription, tap } from 'rxjs';
 
@@ -8,23 +8,22 @@ import { Observable, Subject, Subscription, tap } from 'rxjs';
   styleUrls: ['./loader.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LoaderComponent implements OnInit {
+export class LoaderComponent {
 
-  public isLoading$: Observable<boolean>;
   public isLoading: boolean = false;
 
   constructor(
     private readonly _loaderService: LoaderService,
-    private readonly _cdr: ChangeDetectorRef
+    private readonly _cdr: ChangeDetectorRef,
+    private readonly _renderer2: Renderer2,
   ) {
-    this.isLoading$ = this._loaderService.getLoaderStatus().pipe(tap(res => {
+    this._loaderService.getLoaderStatus().subscribe(res => {
       this.isLoading = res;
+      res ? this._renderer2.addClass(document.body, 'no-scroll') :
+        this._renderer2.removeClass(document.body, 'no-scroll');
       this._cdr.detectChanges();
-    }));
+    });
   }
 
-  public ngOnInit(): void {
-
-  }
 
 }

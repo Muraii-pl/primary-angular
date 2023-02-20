@@ -4,6 +4,7 @@ import { HttpParams } from '@angular/common/http';
 import { Observable, Subject, UnaryFunction } from 'rxjs';
 import { ICategoryPost } from '../interfaces/ICategoryPost';
 import { IPost } from '../interfaces/IPost';
+import { INewestPost } from '../interfaces/INewestPost';
 
 @Injectable({
   providedIn: 'root'
@@ -60,7 +61,7 @@ export class PostService {
     return this._apiService.get(`${this._baseUrl}/${id}`, param)
   }
 
-  public getAllPost(pageSize: number = 10, pageIndex: number = 1): Observable<any> {
+  public getAllPost(pageSize: number = 10, pageIndex: number = 1): Observable<INewestPost> {
 
     const param = new HttpParams({
       fromObject: {

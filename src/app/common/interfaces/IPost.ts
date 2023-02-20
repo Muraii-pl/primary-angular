@@ -4,8 +4,8 @@ export interface IPost {
   title?: {
     rendered: string
   };
-  name: string;
-  slug: string;
+  name: string | SafeValue;
+  slug?: string;
   id?: number;
   categories?: number[];
   content? : {
@@ -37,5 +37,11 @@ export interface IPost {
         rendered: string
       }
     }[];
-  }
+  };
+  featured_image?: {
+    link: string,
+    alt_text: string,
+    source_url: string,
+    title: string
+  };
 }
