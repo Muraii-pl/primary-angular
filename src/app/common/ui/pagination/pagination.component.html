@@ -1,5 +1,50 @@
-<div>
-  <span> < </span>
-  <span *ngFor="let pageNumber of displayedListOfPage">{{ pageNumber }}</span>
-  <span> > </span>
-</div>
+<nav class="pagination" aria-label="Paginacja" role="navigation">
+  <ul class="pagination__list">
+    <li class="pagination__list__item">
+      <a class="pagination__list__link"
+         aria-label="Poprzednia strona"
+         [attr.aria-disabled]="currentPage === +displayedListOfPage[0]"
+         [attr.disabled]="currentPage === +displayedListOfPage[0]"
+         (click)="currentPage === 1 ? $event.stopPropagation() : prevPage();"
+         (keydown.enter)="currentPage === 1 ? $event.stopPropagation() : prevPage()"
+         [ngClass]="{'cursor-default' : currentPage === 1}"
+         role="button"
+         tabindex="0"
+      >
+        <span aria-hidden="true"> &laquo;</span>
+        <span class="sr-only">Poprzednia strona</span>
+      </a>
+    </li>
+    <li *ngFor="let page of displayedListOfPage;let index = index" class="pagination__list__item">
+      <a class="pagination__list__link"
+         [attr.aria-current]="currentPage === +page ? 'page' : null"
+         [attr.aria-disabled]="page === '...'"
+         (click)="changePage(index, page)"
+         (keydown.enter)="changePage(index, page)"
+         [ngClass]="{
+         'cursor-default' : page === '...',
+         'pagination__list__link--active': +page === currentPage
+         }"
+         role="button"
+         [tabindex]="page !== '...' ? 0 : -1"
+      >
+        {{ page }}
+      </a>
+    </li>
+    <li class="pagination__list__item">
+      <a class="pagination__list__link"
+         aria-label="Następna strona"
+         [attr.aria-disabled]="currentPage === totalPages"
+         [attr.disabled]="currentPage === totalPages"
+         (click)="currentPage === totalPages ? $event.stopPropagation() : nextPage()"
+         (keydown.enter)="currentPage === totalPages ? $event.stopPropagation() : nextPage()"
+         [ngClass]="{'cursor-default' : currentPage === totalPages}"
+         role="button"
+         tabindex="0"
+      >
+        <span aria-hidden="true"> &raquo;</span>
+        <span class="sr-only">Następna strona</span>
+      </a>
+    </li>
+  </ul>
+</nav>

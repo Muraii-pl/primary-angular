@@ -1,4 +1,7 @@
 <ng-container *ngIf="newsPostList?.length">
   <app-post-box *ngFor="let postItem of newsPostList" [postProperty]="postItem"></app-post-box>
-  <app-pagination [(currentPage)]="currentPage" [totalPages]="100"></app-pagination>
+  <app-pagination [(currentPage)]="currentPage"
+                  [totalPages]="totalPost"
+                  (currentPageChange)="getPosts()"
+  ></app-pagination>
 </ng-container>

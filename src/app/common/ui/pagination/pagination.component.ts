@@ -1,4 +1,12 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output
+} from '@angular/core';
 
 @Component({
   selector: 'app-pagination[totalPages]',
@@ -14,15 +22,41 @@ export class PaginationComponent implements OnInit {
 
   @Output() currentPageChange: EventEmitter<number> = new EventEmitter<number>();
 
-  public displayedListOfPage: any;
+  public displayedListOfPage: string[];
 
   private _listOfPage: string[];
 
-  constructor() {
+  constructor(
+    private readonly _cdr: ChangeDetectorRef
+  ) {
   }
 
   public ngOnInit(): void {
     this.generateListOfPage();
+  }
+
+  public prevPage(): void {
+    this.currentPage -= 1;
+    this.getDisplayedListOfPage();
+    this.currentPageChange.emit(this.currentPage)
+    this._cdr.detectChanges();
+  }
+
+  public nextPage(): void {
+    this.currentPage += 1;
+    this.getDisplayedListOfPage();
+    this.currentPageChange.emit(this.currentPage)
+    this._cdr.detectChanges();
+  }
+
+  public changePage(index: number, page: string): void {
+
+    if (page !== '...') {
+      this.currentPage = +page;
+      this.getDisplayedListOfPage();
+      this.currentPageChange.emit(this.currentPage)
+      this._cdr.detectChanges();
+    }
   }
 
   private generateListOfPage(): void {
@@ -35,15 +69,14 @@ export class PaginationComponent implements OnInit {
       if (previousValue.length === 0) {
         return ['1']
       }
-      if (this.currentPage + this.different > +currentValue && this.currentPage - this.different < +currentValue ) {
+      if (this.currentPage + this.different > +currentValue && this.currentPage - this.different < +currentValue) {
         return [...previousValue, currentValue]
       } else if (this.totalPages === +currentValue) {
         return [...previousValue, currentValue]
       } else {
         return [...previousValue, '...']
       }
-    }, []).reduce((previousValue, currentValue,currentIndex) => {
-      console.log(previousValue, currentValue)
+    }, []).reduce((previousValue: string[], currentValue: string) => {
       if (currentValue === '1') {
         return ['1']
       } else if (previousValue[previousValue.length - 1] !== currentValue) {
@@ -51,9 +84,9 @@ export class PaginationComponent implements OnInit {
       } else {
         return [...previousValue]
       }
-    },[]);
+    }, []);
 
-
-    console.log(this.displayedListOfPage)
   }
+
+
 }

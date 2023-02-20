@@ -2,14 +2,14 @@ import {
   AfterViewInit, ChangeDetectorRef,
   Component,
   ElementRef,
-
   OnInit,
-  QueryList, ViewChild,
+  QueryList,
+  ViewChild,
   ViewChildren
 } from '@angular/core';
 import { INavigation } from '../../interfaces/INavigation';
 import { NavService } from '../../service/NavService';
-import {  map } from 'rxjs';
+import { map } from 'rxjs';
 import { INavigationList } from '../../interfaces/INavigationList';
 import { NavigationTileComponent } from '../navigation-tile/navigation-tile.component';
 
@@ -22,26 +22,28 @@ export class NavigationComponent implements OnInit, AfterViewInit {
   @ViewChild('navRef') navRef: ElementRef
   public navList: INavigation[];
   @ViewChildren('navItemRef') navItemQueryList: QueryList<NavigationTileComponent>
-  public readonly staticNavList:INavigation[] = [
+  public readonly staticNavList: INavigation[] = [
     {
       name: 'Kontakt',
-      id:0,
-      slug:'kontakt',
+      id: 0,
+      slug: 'kontakt',
       isLink: false,
       isPage: true
     },
     {
       name: 'E-dziennik',
-      id:0,
-      slug:'https://cufs.vulcan.net.pl/gminahazlach/Account/LogOn',
+      id: 0,
+      slug: 'https://cufs.vulcan.net.pl/gminahazlach/Account/LogOn',
       isLink: true
     }
   ]
   public isNavOpen = false;
+
   constructor(
     private readonly _navService: NavService,
     private readonly _cdr: ChangeDetectorRef,
-  ) { }
+  ) {
+  }
 
   public ngOnInit(): void {
     this.getCategories();
@@ -53,7 +55,7 @@ export class NavigationComponent implements OnInit, AfterViewInit {
 
   public toggleNavigation(isNavOpen: boolean): void {
     this.isNavOpen = isNavOpen;
-    const body =  document.querySelector('body')
+    const body = document.querySelector('body')
     if (this.isNavOpen) {
       this.navRef.nativeElement.scrollIntoView({ behavior: 'smooth' })
       body.classList.add('navIsOpen')
@@ -65,20 +67,21 @@ export class NavigationComponent implements OnInit, AfterViewInit {
   private getCategories(): void {
     this._navService.getAllCategories().pipe(
       map((res: INavigationList[]) => {
-      return res.map((category: INavigationList) => {
-        return {
-          name: category['name'],
-          id: category['id'],
-          slug: category['slug']
-        }
-      })
-    }))
+        return res.map((category: INavigationList) => {
+          return {
+            name: category['name'],
+            id: category['id'],
+            slug: category['slug']
+          }
+        })
+      }))
     .subscribe((categories: INavigation[]) => {
       this._navService.setNavList(categories)
       this.navList = categories.concat(this.staticNavList)
       .filter(navItem => navItem['slug'] !== 'bez-kategorii' && navItem['slug'] !== 'sub-menu');
     })
   }
+
   private toggleAllNavigationList(): void {
     for (const currentNavItem of this.navItemQueryList) {
       currentNavItem.onToggle.subscribe((isOpened: boolean) => {

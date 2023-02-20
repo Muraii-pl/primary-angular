@@ -20,18 +20,16 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./news-page.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NewsPageComponent implements OnInit, OnDestroy {
+export class NewsPageComponent implements OnInit {
 
   public newsPostList: IPost[] = []
-  public currentPage = 10;
-  private _pageIndex = 1;
+  public currentPage = 1;
+  public totalPost: number;
   private _pageSize: number = 10;
-  private totalPost: number;
 
   constructor(
     private readonly _postService: PostService,
     private readonly _renderer2: Renderer2,
-    private readonly _zone: NgZone,
     private readonly _cdr: ChangeDetectorRef,
     private readonly _appRef: ApplicationRef,
     private readonly _domSanitizer: DomSanitizer
@@ -40,11 +38,11 @@ export class NewsPageComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.getPosts();
-    this._zone.runOutsideAngular(() => this.lazyLoading())
   }
 
-  private getPosts(): void {
-    this._postService.getAllPost(this._pageSize, this._pageIndex).pipe(map((res: INewestPost) => {
+  public getPosts(): void {
+    console.log(this.currentPage)
+    this._postService.getAllPost(this._pageSize, this.currentPage).pipe(map((res: INewestPost) => {
       return {
         Total: res.Total,
         TotalPages: res.TotalPages,
@@ -63,27 +61,9 @@ export class NewsPageComponent implements OnInit, OnDestroy {
       }
     }))
     .subscribe((res:INewestPost) => {
-      this.newsPostList = [...this.newsPostList, ...res.Posts];
-      this.totalPost = res.Total;
-      console.log(this.newsPostList)
+      this.newsPostList = res.Posts;
+      this.totalPost = res.TotalPages;
       this._cdr.detectChanges();
-      this._appRef.tick();
     })
-  }
-
-  private lazyLoading() {
-    this._renderer2.listen('window', 'scroll', () => {
-      if (innerHeight + pageYOffset >= document.body.offsetHeight) {
-        if (this.totalPost > this._pageIndex * this._pageSize) {
-          this._pageIndex += 1;
-          this.getPosts();
-
-        }
-      }
-    })
-  }
-
-  public ngOnDestroy(): void {
-    this._cdr.detectChanges();
   }
 }

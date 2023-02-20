@@ -1,0 +1,58 @@
+.pagination {
+  &__list {
+    display: flex;
+    justify-content: center;
+    gap:5px;
+    &__link {
+      padding: 5px;
+      color: var(--color);
+      text-decoration: var(--text-decoration);
+      text-align: center;
+      cursor: pointer;
+      &:hover {
+        text-decoration: underline;
+      }
+      &:focus {
+        outline: 1px solid var(--color);
+      }
+      &[aria-disable=true]&:hover {
+        text-decoration: none;
+        pointer-events: none;
+      }
+      &[aria-current="page"] {
+        font-weight: bold;
+        background-color: var(--mainColor);
+      }
+    }
+  }
+}
+//.pagination__list {
+//  display: flex;
+//  list-style: none;
+//  padding: 0;
+//  margin: 0;
+//  justify-content: center;
+//}
+//
+//.page-item {
+//  margin: 0 5px;
+//}
+//
+//.page-link {
+//  display: block;
+//  padding: 5px 10px;
+//  color: #333;
+//  text-decoration: none;
+//  border: 1px solid #ccc;
+//}
+//
+//.page-link:hover {
+//  background-color: #eee;
+//}
+//
+//.page-link[aria-current="page"] {
+//  font-weight: bold;
+//  background-color: #007bff;
+//  color: #fff;
+//  border-color: #007bff;
+//}

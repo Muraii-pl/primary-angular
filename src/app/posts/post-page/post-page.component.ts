@@ -19,7 +19,7 @@ import { DomSanitizer } from '@angular/platform-browser';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None
 })
-export class PostPageComponent implements OnInit, AfterViewInit {
+export class PostPageComponent implements OnInit {
 
   @ViewChild('mainSection', { static: false }) set mainSection(mainSection: ElementRef<HTMLElement>) {
     if (mainSection) {
@@ -63,10 +63,6 @@ export class PostPageComponent implements OnInit, AfterViewInit {
         }
       }),
     );
-  }
-
-  public ngAfterViewInit(): void {
-
   }
 
   public setEventListener(): void {

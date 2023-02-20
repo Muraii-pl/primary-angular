@@ -8,7 +8,7 @@
     *ngIf="name !== 'E-dziennik'; else externalLink"
     [routerLink]="['/post', postId]"
     class="menu__item__link"
-
+    role="link"
   >
     {{ name }}
   </a>
@@ -21,7 +21,7 @@
 >
   <a
     [routerLink]="['/', slug]"
-
+    role="link"
     class="menu__item__link"
   >
     {{ name }}
@@ -57,10 +57,10 @@
 <ng-template #externalLink>
   <a
     [href]="slug"
-
     target="_blank"
-    role="menuitem"
-    class="menu__item__link">
+    class="menu__item__link"
+    role="link"
+  >
     {{ name }}
   </a>
 </ng-template>
