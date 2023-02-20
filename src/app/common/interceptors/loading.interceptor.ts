@@ -1,4 +1,4 @@
-import { Injectable, Renderer2 } from '@angular/core';
+import { Injectable } from '@angular/core';
 import {
   HttpRequest,
   HttpHandler,
@@ -12,18 +12,19 @@ import { LoaderService } from '../service/LoaderService';
 export class LoadingInterceptor implements HttpInterceptor {
 
   private _totalRequests = 0;
+
   constructor(
     private readonly _loaderService: LoaderService,
-
-  ) {}
+  ) {
+  }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     this._totalRequests++;
     this._loaderService.show();
     return next.handle(request).pipe(
-      finalize(()=> {
+      finalize(() => {
         this._totalRequests--;
-        if(this._totalRequests === 0) {
+        if (this._totalRequests === 0) {
           this._loaderService.hide();
         }
       })

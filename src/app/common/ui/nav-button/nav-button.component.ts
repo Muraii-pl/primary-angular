@@ -16,13 +16,16 @@ import {
 })
 export class NavButtonComponent implements OnInit {
 
-  @Input() menuIsOpen = false;
-  @Output() isOpen: EventEmitter<boolean> = new EventEmitter<boolean>(true)
+  @Input() public menuIsOpen = false;
+  @Output() public isOpen: EventEmitter<boolean> = new EventEmitter<boolean>(true)
+
   constructor(
     private readonly _cdr: ChangeDetectorRef,
-  ) { }
+  ) {
+  }
 
-  public ngOnInit(): void {  }
+  public ngOnInit(): void {
+  }
 
   public toggleNavigation(): void {
     this.menuIsOpen = !this.menuIsOpen;
