@@ -3,8 +3,6 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  NgZone,
-  OnDestroy,
   OnInit,
   Renderer2
 } from '@angular/core';
@@ -25,6 +23,7 @@ export class NewsPageComponent implements OnInit {
   public newsPostList: IPost[] = []
   public currentPage = 1;
   public totalPost: number;
+
   private _pageSize: number = 10;
 
   constructor(
@@ -41,7 +40,6 @@ export class NewsPageComponent implements OnInit {
   }
 
   public getPosts(): void {
-    console.log(this.currentPage)
     this._postService.getAllPost(this._pageSize, this.currentPage).pipe(map((res: INewestPost) => {
       return {
         Total: res.Total,
@@ -53,14 +51,15 @@ export class NewsPageComponent implements OnInit {
               title: post.featured_image.title ? post.featured_image.title : '',
               alt_text: post.featured_image.alt_text ? post.featured_image.alt_text : ''
             },
-            name: this._domSanitizer.bypassSecurityTrustHtml(post.name as string) ,
+            id: post.id,
+            name: this._domSanitizer.bypassSecurityTrustHtml(post.name as string),
             shortedContent: post.shortedContent,
             slug: post.slug
           }
         })
       }
     }))
-    .subscribe((res:INewestPost) => {
+    .subscribe((res: INewestPost) => {
       this.newsPostList = res.Posts;
       this.totalPost = res.TotalPages;
       this._cdr.detectChanges();

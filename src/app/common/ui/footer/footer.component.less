@@ -1,3 +1,10 @@
+@import "../../styles/common";
+:host {
+  .min-width(@md,{
+    order:3;
+    flex: 1 100%;
+  })
+}
 .footer {
   width: 100%;
   padding: 40px 15px;
@@ -13,7 +20,7 @@
     &__item {
       color: var(--color);
       font-size: var(--fontSize);
-      text-decoration: var(--text-decoration);
+      text-decoration: var(--textDecoration);
 
       &:focus-within {
         outline: var(--outline);
@@ -32,7 +39,7 @@
     padding: 0 16px;
 
     &__main_text {
-      font-size: 10px;
+      font-size: 9px;
       color: var(--color);
       opacity: .5;
     }

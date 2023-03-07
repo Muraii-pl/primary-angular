@@ -15,6 +15,7 @@ import { FullScreenGalleryComponent } from './full-screen-gallery/full-screen-ga
 import { BaseModalComponent } from './base-modal/base-modal.component';
 import { TrapFocusDirective } from '../directives/trap-focus.directive';
 import { PaginationComponent } from './pagination/pagination.component';
+import { AccessibilityBarComponent } from './accessibility-bar/accessibility-bar.component';
 
 
 
@@ -32,7 +33,8 @@ import { PaginationComponent } from './pagination/pagination.component';
     BipComponent,
     FullScreenGalleryComponent,
     BaseModalComponent,
-    PaginationComponent
+    PaginationComponent,
+    AccessibilityBarComponent
 
   ],
   exports: [
@@ -43,7 +45,8 @@ import { PaginationComponent } from './pagination/pagination.component';
     PostBoxComponent,
     BaseModalComponent,
     FullScreenGalleryComponent,
-    PaginationComponent
+    PaginationComponent,
+    AccessibilityBarComponent
   ],
   imports: [
     CommonModule,

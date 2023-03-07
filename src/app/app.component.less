@@ -1,0 +1,13 @@
+@import "./common/styles/common";
+:host{
+  .min-width(@md, {
+    display: flex;
+    flex-flow: row wrap;
+  })
+}
+.main {
+  .min-width(@md, {
+    width: calc(100% - 168px);
+  });
+}
+

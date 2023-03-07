@@ -64,6 +64,7 @@ export class NavigationTileComponent implements OnInit {
   }
 
   public toggle(): void {
+    console.log('test')
     this.isOpen = !this.isOpen;
     this.onToggle.emit(this.isOpen)
   }

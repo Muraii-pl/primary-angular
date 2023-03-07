@@ -1,41 +1,54 @@
 @import "../../styles/common";
+
 :host {
   align-self: flex-start;
 }
-.button {
 
+.button {
   padding: 8px;
+
+  .min-width(@md,{
+    display: none;
+  });
+
   &:focus {
     outline: var(--outline);
   }
+
   &__box {
     width: 15px;
     height: 15px;
     position: relative;
     display: inline-block;
   }
+
   &__inner {
     .button__mixin();
     left: 0;
-    top:50%;
+    top: 50%;
     transform: translateY(-50%);
     transition: background-color .1s .2s ease-in-out;
+
     &:after, &:before {
       .button__mixin();
       content: '';
       left: 0;
       transition: transform .2s .2s ease-in-out;
     }
+
     &:before {
       top: -5px
     }
+
     &:after {
-      top:5px;
+      top: 5px;
     }
   }
-  &--open &__inner{
+
+  &--open &__inner {
     background-color: transparent;
   }
+
   &--open &__inner:before {
     transform: translateY(5px) rotate(45deg);
   }

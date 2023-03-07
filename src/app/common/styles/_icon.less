@@ -1,0 +1,42 @@
+@font-face {
+  font-family: MGFont;
+  src: url("../../../assets/fonts/mg-font/mg-font.ttf") format("truetype"),
+  url("../../../assets/fonts/mg-font/mg-font.eot") format('embedded-opentype'),
+  url("../../../assets/fonts/mg-font/mg-font.svg") format('svg');
+}
+
+
+.mg {
+  display: inline-block;
+  font: normal normal normal 16px/1 MGFont;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.mg-normal-font:before {
+  content: "\e900";
+}
+
+.mg-bigger-font:before {
+  content: "\e901";
+}
+
+.mg-biggest-font:before {
+  content: "\e902";
+}
+
+.mg-bold-font:before {
+  content: "\e903"
+}
+
+.mg-eye:before {
+  content: "\e904"
+}
+
+.mg-hyperlink:before {
+  content: "\e905"
+}
+
+.mg-reset-contrast:before {
+  content: "\e906";
+}

@@ -1,0 +1,14 @@
+<div class="accessibility">
+  <button *ngFor="let acc of accessibilityButtonConfig"
+          [ngStyle]="{
+          'background-color': acc.backgroundColor,
+          'color': acc.color ?? 'var(--color)'
+          }"
+          [title]="acc.title"
+          (click)="changeAccessibilityValue(acc.name)"
+          (keydown.enter)="changeAccessibilityValue(acc.name)"
+          class="accessibility__button"
+  >
+    <i class='mg {{ acc.icon }}'></i>
+  </button>
+</div>
